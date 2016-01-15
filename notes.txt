@@ -40,6 +40,14 @@ ideas:
 - allow use of BMPs
 - Rewrite at each keystroke
 
+done:
+rendering
+player movement
+input handling
+tileset rendering
+window resizing/fullscreen
+viewports n gamestates
+
 void render_tile(SDL_Renderer* renderer, const char* c, int x, int y,
     SDL_Color bg_color, SDL_Color tile_color)
 {
@@ -56,29 +64,3 @@ SDL_Color bg_color, tile_color;
 }
 
 USE GOTOS
-
-
-/* todo */
-/*
-If all you're trying to do is pick tiles out of the Dwarf Fortress set,
-you will end up needing some kind of lookup table, yes.
-There's not much way around that since you need to reference things somehow.
-However, it's going to be more efficient if you use an enum,
-in which you can list all 256 CP437 values in order, e.g.
-
-enum Character {
-    CHAR_NONE,        // 0
-    CHAR_SMILEY,      // 1
-    CHAR_SMILEY_DARK, // 2
-    ...
-};
-
-Then you can use a simple formula to extract the (x,y) coordinates from
-the tileset, based on the integer value of the enum:
-
-x = (Character % 16)
-
-y = (Character / 16)
-
-(And modify your x/y values by the dimensions of your font.)
-*/

@@ -28,20 +28,28 @@ static menu_item main_menu[3]=
 	{FALSE,"Return to OS"}
 };
 
-
 void run_game ()
 {
+	int ww, wh;
+	char size[20];
+	
     init_window();
     load_texture(TILESET); // we got a nice mem leak here
-
+	
 	while (!quit) {
+		
+		// Window title + size
+		SDL_GetWindowSize(WIN, &ww, &wh);
+		sprintf(size, "%s %dx%d", WINDOW_TITLE, ww, wh);
+		SDL_SetWindowTitle(WIN, size);
+
+		// Set screen to black
 		SDL_RenderClear(REN);
 		SDL_SetRenderDrawColor(REN, 0, 0, 0, 255);
 
 		render_game();
 		
 		while (SDL_PollEvent (&ev)) {
-		
 			switch (ev.type) {
 			case SDL_QUIT:
 				quit = TRUE;
@@ -67,9 +75,6 @@ void run_game ()
 
 void render_game ()
 {
-	//SDL_RenderClear(REN);
-	//SDL_SetRenderDrawColor(REN, 0, 0, 0, 255);
-
 	if (currentgs == TITLE_SCREEN) {
 		render_ts();
 	} else if (currentgs == IN_GAME) {
