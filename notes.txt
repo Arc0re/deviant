@@ -1,0 +1,84 @@
+// Emacs style mode select   -*- C -*- 
+
+int = 32bits = 4bytes
+short        = 2bytes
+char         = 1byte
+
+the pointer takes the size according to the arch: 32(4 bytes big) or
+64bits(8bytes big)
+
+char *str = "hello"; // 6 bytes string : h1 e2 l3 l4 o5 \0 (NULL)
+should always be const char*, char* is only tolerated for old code
+
+void* c = malloc(6);
+char* cc = (char*)c;
+cc[0] = 'H';/*and not "H", since " " are strings, its 2bytes ("H\0"), not 1*/
+cc[1] = 'e';
+cc[2] = 'l';
+cc[3] = 'l';
+cc[4] = 'o';
+cc[5] = '\o'; // or 0
+
+/* auto allocated */ 
+stack variable
+local variable
+automatic variable
+
+--- Not declare storage in a header is a good idea
+
+ideas:
+- theme: at the mountains of madness, the shadow over innsmouth
+- ROGTOPUS
+- Robinson : island, beach,...
+- DOOM Bible
+- HERO can be a squid man
+- Enemies: owl man
+
+- VIEWPORT
+- add_tile(tiletype type/*water, forest...*/) ==> render_tile(...);
+
+- allow use of BMPs
+- Rewrite at each keystroke
+
+void render_tile(SDL_Renderer* renderer, const char* c, int x, int y,
+    SDL_Color bg_color, SDL_Color tile_color)
+{
+}
+
+// K&R old school
+void
+render_tile(renderer, c, x, y, bg_color, tile_color)
+SDL_Renderer* renderer;
+const char* c;
+int x, y;
+SDL_Color bg_color, tile_color;
+{
+}
+
+USE GOTOS
+
+
+/* todo */
+/*
+If all you're trying to do is pick tiles out of the Dwarf Fortress set,
+you will end up needing some kind of lookup table, yes.
+There's not much way around that since you need to reference things somehow.
+However, it's going to be more efficient if you use an enum,
+in which you can list all 256 CP437 values in order, e.g.
+
+enum Character {
+    CHAR_NONE,        // 0
+    CHAR_SMILEY,      // 1
+    CHAR_SMILEY_DARK, // 2
+    ...
+};
+
+Then you can use a simple formula to extract the (x,y) coordinates from
+the tileset, based on the integer value of the enum:
+
+x = (Character % 16)
+
+y = (Character / 16)
+
+(And modify your x/y values by the dimensions of your font.)
+*/
