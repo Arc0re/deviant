@@ -7,20 +7,23 @@
 #include "player.h"
 #include "states.h"
 #include "menu.h"
-#include "map.h"
+#include "world.h"
 
 //
 // PROTOTYPES
 //
-void run_game();
-void render_game();
-void mv_menu_cursor (SDL_KeyboardEvent *key);
+void run_game(void);
+void render_game(void);
+void mv_menu_cursor(SDL_KeyboardEvent *key);
+void w_viewport(void);
+void c_viewport(void);
 
 
 static BOOL quit = FALSE;
 static SDL_Event ev;
 static GAMESTATE currentgs = TITLE_SCREEN;
 static int pos = 0; // cursor pos
+
 static menu_item main_menu[3]=
 {
 	{TRUE,"New game"},
@@ -28,7 +31,8 @@ static menu_item main_menu[3]=
 	{FALSE,"Return to OS"}
 };
 
-void run_game ()
+
+void run_game (void)
 {
 	int ww, wh;
 	char size[20];
@@ -73,17 +77,20 @@ void run_game ()
     close_window(); // this should free the texture too
 }
 
-void render_game ()
+void render_game (void)
 {
 	if (currentgs == TITLE_SCREEN) {
 		render_ts();
 	} else if (currentgs == IN_GAME) {
 
 		w_viewport();
+		gen_world();
 		render_player();
 
 		c_viewport();
+		render_tile(CHAR_WAVES, 0, 40, DEEPBLUE, BLUE);
 		render_str("console:", 0, 0, WHITE, BLUE);
+		render_str("Press 'q' to quit.", 0, 20, BLACK, RED);
 	}
 	SDL_RenderPresent(REN);
 }
@@ -118,10 +125,10 @@ void mv_menu_cursor (SDL_KeyboardEvent *key)
 	}
 }
 
-void render_ts ()
+void render_ts (void)
 {
 	int ww, wh;
-	const char* t = "DEVIOUS -- ALPHA BUILD";
+	const char* t = "DEVIANT -- ALPHA BUILD";
 	const char* st = "All hail the Mighty Cthulhu!!";
 	const char* c = "Made by Arc0re1 (c) 2016";
 
@@ -136,4 +143,32 @@ void render_ts ()
 	render_str(c, (ww/2-(csize/2)), wh-20, BLACK, RED);
 
 	render_menu(main_menu, ((wh/2)-(15*3)), 3, MENU_CENTERED);
+}
+
+void w_viewport (void)
+{
+	int ww, wh;
+	SDL_Rect world_view;
+
+	SDL_GetWindowSize(WIN, &ww, &wh);
+	
+	world_view.x = 0;
+	world_view.y = 0;
+	world_view.w = ww;
+	world_view.h = wh-(wh/5);
+	SDL_RenderSetViewport(REN, &world_view);
+}
+
+void c_viewport (void)
+{
+	int ww, wh;
+	SDL_Rect console;
+
+	SDL_GetWindowSize(WIN, &ww, &wh);
+	
+	console.x = 0;
+	console.y = wh-(wh/5);
+	console.w = ww;
+	console.h = wh/5;
+	SDL_RenderSetViewport(REN, &console);
 }

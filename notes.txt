@@ -33,7 +33,8 @@ ideas:
 - DOOM Bible
 - HERO can be a squid man
 - Enemies: owl man
-
+- tentacle revival
+	arcwings, mountedcore
 - VIEWPORT
 - add_tile(tiletype type/*water, forest...*/) ==> render_tile(...);
 
