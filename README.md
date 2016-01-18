@@ -1,3 +1,3 @@
 #Deviant
 
-A little homemade roguelike written in C, using only SDL2.
+A little homemade roguelike written in C++ and SDL2.
