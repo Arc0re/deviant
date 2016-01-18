@@ -1,9 +1,9 @@
 #http://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
-#CC:= gcc-5
-SOURCES:= $(wildcard src/*.c)
-OBJECTS:= $(addprefix obj/,$(notdir $(SOURCES:.c=.o)))
+CXX:= g++-5
+SOURCES:= $(wildcard src/*.cc)
+OBJECTS:= $(addprefix obj/,$(notdir $(SOURCES:.cc=.o)))
 
-CFLAGS:= -c -Wall -Werror -g -I/usr/local/include/SDL2 -Iinclude
+CXXFLAGS:= -c -std=c++11 -Wall -Werror -g -I/usr/local/include/SDL2 -Iinclude
 LDFLAGS:= -L/usr/local/lib
 LDLIBS:= -lSDL2 -lSDL2_image
 
@@ -15,12 +15,12 @@ run: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
 	@echo "\nLinking...\n"
-	$(CC) $(LDFLAGS) $(LDLIBS) -o $@ $^
+	$(CXX) $(LDFLAGS) $(LDLIBS) -o $@ $^
 	@echo "\nLinking for target $(EXECUTABLE) succeeded!\n\n"
 
-obj/%.o: src/%.c
+obj/%.o: src/%.cc
 	@echo "\nCompiling:"
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CXX) $(CXXFLAGS) -o $@ $<
 
 .PHONY: clean
 clean:

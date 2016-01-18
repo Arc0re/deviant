@@ -1,0 +1,1 @@
+TILESET=curses_640x300ALPHA.png

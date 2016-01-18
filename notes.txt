@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C -*- 
+// Emacs style mode select   -*- C++ -*- 
 
 int = 32bits = 4bytes
 short        = 2bytes
@@ -28,6 +28,7 @@ automatic variable
 
 ideas:
 - theme: at the mountains of madness, the shadow over innsmouth
+	- Theme: Metroid: Chozo RL, purple land, chozo temples...
 - ROGTOPUS
 - Robinson : island, beach,...
 - DOOM Bible

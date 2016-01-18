@@ -9,15 +9,13 @@
 #include "menu.h"
 #include "world.h"
 
-//
-// PROTOTYPES
-//
+#include <cstdlib>
+
 void run_game(void);
 void render_game(void);
 void mv_menu_cursor(SDL_KeyboardEvent *key);
 void w_viewport(void);
 void c_viewport(void);
-
 
 static BOOL quit = FALSE;
 static SDL_Event ev;
@@ -31,15 +29,13 @@ static menu_item main_menu[3]=
 	{FALSE,"Return to OS"}
 };
 
-
-void run_game (void)
+void run_game(void)
 {
 	int ww, wh;
 	char size[20];
 	
     init_window();
-    load_texture(TILESET); // we got a nice mem leak here
-	
+
 	while (!quit) {
 		
 		// Window title + size
@@ -73,11 +69,10 @@ void run_game (void)
 			}
 		}
 	}
-	
-    close_window(); // this should free the texture too
+	close_window();
 }
 
-void render_game (void)
+void render_game(void)
 {
 	if (currentgs == TITLE_SCREEN) {
 		render_ts();
@@ -95,7 +90,7 @@ void render_game (void)
 	SDL_RenderPresent(REN);
 }
 
-void mv_menu_cursor (SDL_KeyboardEvent *key)
+void mv_menu_cursor(SDL_KeyboardEvent *key)
 {
 	switch (key->keysym.sym) {
 	case SDLK_DOWN: ++pos; break;
@@ -125,7 +120,7 @@ void mv_menu_cursor (SDL_KeyboardEvent *key)
 	}
 }
 
-void render_ts (void)
+void render_ts(void)
 {
 	int ww, wh;
 	const char* t = "DEVIANT -- ALPHA BUILD";
@@ -145,7 +140,7 @@ void render_ts (void)
 	render_menu(main_menu, ((wh/2)-(15*3)), 3, MENU_CENTERED);
 }
 
-void w_viewport (void)
+void w_viewport(void)
 {
 	int ww, wh;
 	SDL_Rect world_view;
@@ -159,7 +154,7 @@ void w_viewport (void)
 	SDL_RenderSetViewport(REN, &world_view);
 }
 
-void c_viewport (void)
+void c_viewport(void)
 {
 	int ww, wh;
 	SDL_Rect console;

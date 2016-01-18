@@ -1,3 +1,5 @@
+// -*- C++ -*-
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -14,7 +16,7 @@ typedef struct {
 } PLAYER;
 
 void render_player();
-void move_player();
+void move_player(int x, int y);
 void playerattack();
 
 #endif

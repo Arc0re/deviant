@@ -5,7 +5,6 @@
 #include "window.h"
 
 #include <string.h>
-#include <SDL.h>
 
 void render_menu(menu_item* items, int y, int nbr, int flag)
 {
