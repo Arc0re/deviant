@@ -32,6 +32,7 @@ bool load_texture(std::string path)
 	return true;
 }
 
+// Delete this?
 void render_tile(CHARS c, int x, int y, SDL_Color bg_color, SDL_Color tile_color)
 {
     int X = TILE_WIDTH;
@@ -78,8 +79,6 @@ void render_tile(CHARS c, int x, int y, SDL_Color bg_color, SDL_Color tile_color
 
 void render_tile(int c, int x, int y, SDL_Color bg_color, SDL_Color tile_color)
 {
-    //int X = TILE_WIDTH;
-    //int Y = TILE_HEIGHT;
     CHAR_DATA chars;
 
     // texture png must be 8x12 * 256 tiles and based on CP437, 16x16 lines

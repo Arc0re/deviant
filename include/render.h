@@ -20,6 +20,7 @@ extern int TILE_WIDTH; // texture w & h
 extern int TILE_HEIGHT;
 
 bool load_texture(std::string path);
+void render_tile(int c, int x, int y, SDL_Color bg_color, SDL_Color tile_color);
 void render_tile(CHARS c, int x, int y, SDL_Color bg, SDL_Color t);
 void render_str(const char* str, int x, int y, SDL_Color bg, SDL_Color t);
 

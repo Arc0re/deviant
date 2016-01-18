@@ -83,8 +83,8 @@ void render_game(void)
 		render_player();
 
 		c_viewport();
-		render_tile(CHAR_WAVES, 0, 40, DEEPBLUE, BLUE);
-		render_str("console:", 0, 0, WHITE, BLUE);
+		render_tile(CHAR_dark_shade, 0, 40, DEEPBLUE, BLUE);
+		render_str("console: should show a blue wave:", 0, 0, WHITE, BLUE);
 		render_str("Press 'q' to quit.", 0, 20, BLACK, RED);
 	}
 	SDL_RenderPresent(REN);
