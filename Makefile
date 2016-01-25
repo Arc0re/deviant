@@ -3,7 +3,7 @@ CXX:= g++-5
 SOURCES:= $(wildcard src/*.cc)
 OBJECTS:= $(addprefix obj/,$(notdir $(SOURCES:.cc=.o)))
 
-CXXFLAGS:= -c -std=c++11 -Wall -Werror -g -I/usr/local/include/SDL2 -Iinclude
+CXXFLAGS:= -c -std=c++14 -Wall -Werror -g -I/usr/local/include/SDL2 -Iinclude
 LDFLAGS:= -L/usr/local/lib
 LDLIBS:= -lSDL2 -lSDL2_image
 

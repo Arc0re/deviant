@@ -8,6 +8,7 @@
 #include "states.h"
 #include "menu.h"
 #include "world.h"
+#include "object.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -24,15 +25,16 @@ static SDL_Event ev;
 static GAMESTATE currentgs = TITLE_SCREEN;
 static int pos = 0; // cursor pos
 static World world;
+static Player player(CHAR_at, {0,48,64}, {51,102,0});
 
-static menu_item main_menu[3]=
+static menu_item main_menu[3] =
 {
 	{TRUE,"New game"},
 	{FALSE,"Options"},
 	{FALSE,"Return to OS"}
 };
 
-void run_game(void)
+void run_game()
 {
 	int ww, wh;
 	char size[20];
@@ -58,15 +60,20 @@ void run_game(void)
 				quit = TRUE;
 				break;
 			case SDL_KEYDOWN:
-				if (currentgs==TITLE_SCREEN) {
+				if (currentgs == TITLE_SCREEN) {
 					mv_menu_cursor(&ev.key);
-				} else if (currentgs==IN_GAME) {
+				} else if (currentgs == IN_GAME) {
 					switch (ev.key.keysym.sym) {
-					case SDLK_q: quit = TRUE;
-					case SDLK_UP: move_player(0, -12); break;
-					case SDLK_DOWN: move_player(0, +12); break;
-					case SDLK_LEFT: move_player(-8, 0); break;
-					case SDLK_RIGHT: move_player(+8, 0); break;
+					case SDLK_q:
+						quit = TRUE;
+					case SDLK_UP:
+						player.move(0, -12); break;
+					case SDLK_DOWN:
+						player.move(0, 12); break;
+					case SDLK_LEFT:
+						player.move(-8, 0); break;
+					case SDLK_RIGHT:
+						player.move(8, 0); break;
 					} break;
 				}
 			}
@@ -75,7 +82,7 @@ void run_game(void)
 	close_window();
 }
 
-void render_game(void)
+void render_game()
 {
 	if (currentgs == TITLE_SCREEN) {
 		render_ts();
@@ -84,7 +91,7 @@ void render_game(void)
 
 	    world.renderCellmap();
 
-		render_player();
+		player.render();
 
 		c_viewport();
 		render_str("console:", 0, 0, WHITE, BLUE);
@@ -99,7 +106,7 @@ void mv_menu_cursor(SDL_KeyboardEvent *key)
 	case SDLK_DOWN: ++pos; break;
 	case SDLK_UP: --pos; break;
 	case SDLK_RETURN:
-		if (main_menu[0].is_selected) currentgs=IN_GAME;
+		if (main_menu[0].is_selected) currentgs = IN_GAME;
 		if (main_menu[1].is_selected) bubble("Not implemented yet ;3");
 		if (main_menu[2].is_selected) quit = TRUE;
 		break;
@@ -123,7 +130,7 @@ void mv_menu_cursor(SDL_KeyboardEvent *key)
 	}
 }
 
-void render_ts(void)
+void render_ts()
 {
 	int ww, wh;
 	const char* t = "DEVIANT -- ALPHA BUILD";

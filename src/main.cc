@@ -5,8 +5,7 @@
 void usage()
 {
 	puts("Usage:");
-	puts("'-t': load the tileset");
-	puts("No args loads the ascii tileset. WIP");
+	puts("No args usable yet. WIP");
 	exit(EXIT_FAILURE);
 }
 
@@ -17,11 +16,10 @@ extern "C" int main(int argc, char* argv[])
 	{
 		switch (argv[1][1])
 		{
-		case 't':
-			break;
 		default:
 			printf("Wrong Argument: %s\n", argv[1]);
 			usage();
+			break;
 		}
 
 		++argv;

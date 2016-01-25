@@ -4,6 +4,7 @@
 #define PLAYER_H
 
 #include <SDL.h>
+#include "object.h"
 #include "characters.h"
 
 typedef struct {
@@ -18,5 +19,10 @@ typedef struct {
 void render_player();
 void move_player(int x, int y);
 void playerattack();
+
+class Player : public Object
+{
+	using Object::Object;
+};
 
 #endif
