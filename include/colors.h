@@ -18,5 +18,6 @@
 #define PURPLE (SDL_Color){102,0,204}
 
 #define BROWN (SDL_Color){100,17,17}
+#define DEEPBROWN (SDL_Color){139,69,19}
 
 #endif

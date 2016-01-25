@@ -10,6 +10,8 @@
 #include "world.h"
 
 #include <cstdlib>
+#include <iostream>
+#include <random>
 
 void run_game(void);
 void render_game(void);
@@ -21,6 +23,7 @@ static BOOL quit = FALSE;
 static SDL_Event ev;
 static GAMESTATE currentgs = TITLE_SCREEN;
 static int pos = 0; // cursor pos
+static World world;
 
 static menu_item main_menu[3]=
 {
@@ -35,7 +38,7 @@ void run_game(void)
 	char size[20];
 	
     init_window();
-
+	
 	while (!quit) {
 		
 		// Window title + size
@@ -77,14 +80,14 @@ void render_game(void)
 	if (currentgs == TITLE_SCREEN) {
 		render_ts();
 	} else if (currentgs == IN_GAME) {
-
 		w_viewport();
-		gen_world();
+
+	    world.renderCellmap();
+
 		render_player();
 
 		c_viewport();
-		render_tile(CHAR_dark_shade, 0, 40, DEEPBLUE, BLUE);
-		render_str("console: should show a blue wave:", 0, 0, WHITE, BLUE);
+		render_str("console:", 0, 0, WHITE, BLUE);
 		render_str("Press 'q' to quit.", 0, 20, BLACK, RED);
 	}
 	SDL_RenderPresent(REN);
