@@ -20,7 +20,7 @@ World::World()
 	std::cout << "Birth limit: " << birthLimit << std::endl;
 	std::cout << "Death limit: " << deathLimit << std::endl;
 	initWorld();
-	for (int i = 0; i < steps; ++i) {
+	for (int i = 1; i <= steps; ++i) {
 		doSimulationStep();
 		std::cout << "Generation step: " << i << std::endl;
 	}
@@ -32,9 +32,9 @@ World::~World()
 
 void World::initWorld()
 {
-	// Generating base map
-	for (int x=0; x<MAP_WIDTH; ++x) {
-		for (int y=0; y<MAP_HEIGHT; ++y) {
+	// Filling up base map
+	for (int x = 0; x < MAP_WIDTH; ++x) {
+		for (int y = 0; y < MAP_HEIGHT; ++y) {
 			if (dis(gen) < chanceStartAlive) {
 				cellmap[x][y] = true;
 			}
@@ -52,8 +52,8 @@ int World::countAliveNeighbours(Cellmap cellmap, int x, int y)
 	// y-1
 	// y   (x,y)
 	// y+1
-	for (int i=-1; i<2; ++i) {
-		for (int j=-1; j<2; ++j) {
+	for (int i = -1; i < 2; ++i) {
+		for (int j = -1; j < 2; ++j) {
 			int neighbour_x = x+i;
 			int neighbour_y = y+j;
 			
@@ -78,8 +78,6 @@ int World::countAliveNeighbours(Cellmap cellmap, int x, int y)
 
 void World::doSimulationStep()
 {
-	// TODO: fix this shit
-
 	for (int x = 0; x < (int)cellmap.size(); ++x) {
 		for (int y = 0; y < (int)cellmap[0].size(); ++y) {
 			int nbs = countAliveNeighbours(cellmap, x, y);
@@ -101,17 +99,16 @@ void World::doSimulationStep()
 			}
 		}
 	}
-//	return new_cellmap;
 }
 
 void World::renderCellmap()
 {
-	for (unsigned int a = 0; a < newCellmap.size(); ++a) {
-		for (unsigned int b = 0; b < newCellmap[a].size(); ++b) {
+	for (uint a = 0; a < newCellmap.size(); ++a) {
+		for (uint b = 0; b < newCellmap[a].size(); ++b) {
 		    if (newCellmap[a][b] == true) {
-				render_tile(CHAR_hash, a*TILE_WIDTH, b*TILE_HEIGHT, DEEPGREEN, GREEN);
+				render_tile(CHAR_hash, a*TILE_WIDTH, b*TILE_HEIGHT, BLACK, DEEPPURPLE);
 			} else if (newCellmap[a][b] == false ) {
-				render_tile(CHAR_dot, a*TILE_WIDTH, b*TILE_HEIGHT, DEEPBROWN, BROWN);
+				render_tile(CHAR_dot, a*TILE_WIDTH, b*TILE_HEIGHT, BLACK, DEEPGREY);
 			}
 		}
 	}

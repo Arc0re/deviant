@@ -23,10 +23,6 @@ typedef unsigned int uint;
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 300
 
-//#define TILE_WIDTH 16 // 8x12 or 16x16
-//#define TILE_HEIGHT 16
-//#define TILE_NUMBER 256
-//#define SHEET_RESOLUTION 640*300 // 640*400 for square tiles
 #define DEFAULT_SPRITESHEET "art/curses_640x300ALPHA.png"
 #define TILESET "art/Phoebus_16x16.png"
 
