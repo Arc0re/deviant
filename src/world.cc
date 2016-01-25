@@ -62,13 +62,13 @@ int World::countAliveNeighbours(Cellmap cellmap, int x, int y)
                 //Do nothing
             } else if (neighbour_x < 0 ||
 					   neighbour_y < 0 ||
-					   neighbour_x >= (int)cellmap.size() ||
-					   neighbour_y >= (int)cellmap[0].size()) {
+					   neighbour_x >= static_cast<int>(cellmap.size()) ||
+					   neighbour_y >= static_cast<int>(cellmap[0].size())) {
 				//In case the index we're looking at it off the edge of the map
                 count = count + 1;
             }
             //Otherwise, a normal check of the neighbour
-            else if(cellmap[neighbour_x][neighbour_y]){
+            else if (cellmap[neighbour_x][neighbour_y]) {
                 count = count + 1;
             }
 		}
@@ -78,11 +78,11 @@ int World::countAliveNeighbours(Cellmap cellmap, int x, int y)
 
 void World::doSimulationStep()
 {
-	for (int x = 0; x < (int)cellmap.size(); ++x) {
-		for (int y = 0; y < (int)cellmap[0].size(); ++y) {
+	for (int x = 0; x < static_cast<int>(cellmap.size()); ++x) {
+		for (int y = 0; y < static_cast<int>(cellmap[0].size()); ++y) {
 			int nbs = countAliveNeighbours(cellmap, x, y);
 
-			// If a cell is alive, but has too few nbs, kill it
+			// If a cell is alive, but has too few neightboors, kill it
 			if (cellmap[x][y]) {
 				if (nbs < deathLimit) {
 					newCellmap[x][y] = false;
@@ -90,7 +90,7 @@ void World::doSimulationStep()
 					newCellmap[x][y] = true;
 				}
 			} else {
-				// If a cell is dead, check if she has enough nbs to be alive
+				// If a cell is dead, check if she has enough nbs to be alive (DEADCELL lol)
 				if (nbs > birthLimit) {
 					newCellmap[x][y] = true;
 				} else {
@@ -107,7 +107,7 @@ void World::renderCellmap()
 		for (uint b = 0; b < newCellmap[a].size(); ++b) {
 		    if (newCellmap[a][b] == true) {
 				render_tile(CHAR_hash, a*TILE_WIDTH, b*TILE_HEIGHT, BLACK, DEEPPURPLE);
-			} else if (newCellmap[a][b] == false ) {
+			} else if (newCellmap[a][b] == false) {
 				render_tile(CHAR_dot, a*TILE_WIDTH, b*TILE_HEIGHT, BLACK, DEEPGREY);
 			}
 		}

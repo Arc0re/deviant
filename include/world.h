@@ -17,9 +17,10 @@ public:
 	World();
 	~World();
 	void renderCellmap();
+	inline auto getMap() { return newCellmap; }
 
 private:
-	// Random stuff
+	// RNG stuff
 	std::random_device rd;
 	std::mt19937 gen;
 	std::uniform_real_distribution<> dis;

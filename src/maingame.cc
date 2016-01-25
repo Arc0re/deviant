@@ -54,7 +54,7 @@ void run_game()
 
 		render_game();
 		
-		while (SDL_PollEvent (&ev)) {
+		while (SDL_PollEvent(&ev)) {
 			switch (ev.type) {
 			case SDL_QUIT:
 				quit = TRUE;
@@ -150,7 +150,7 @@ void render_ts()
 	render_menu(main_menu, ((wh/2)-(15*3)), 3, MENU_CENTERED);
 }
 
-void w_viewport(void)
+void w_viewport()
 {
 	int ww, wh;
 	SDL_Rect world_view;
@@ -164,7 +164,7 @@ void w_viewport(void)
 	SDL_RenderSetViewport(REN, &world_view);
 }
 
-void c_viewport(void)
+void c_viewport()
 {
 	int ww, wh;
 	SDL_Rect console;

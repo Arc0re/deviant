@@ -3,26 +3,19 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <SDL.h>
 #include "object.h"
 #include "characters.h"
 
-typedef struct {
-    int health;
-    CHARS sym;
-    int x;
-    int y;
-    SDL_Color bg;
-    SDL_Color t;
-} PLAYER;
-
-void render_player();
-void move_player(int x, int y);
-void playerattack();
-
 class Player : public Object
 {
-	using Object::Object;
+public:
+	//using Object::Object;
+	Player(CHARS sym, SDL_Color bg, SDL_Color t);
+	
+	inline void setHealth(int health) { this->health = health; }
+	inline int getHealth() { return health; }
+private:
+	int health;
 };
 
 #endif
