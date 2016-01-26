@@ -32,7 +32,7 @@ bool load_texture(std::string path)
 	return true;
 }
 
-// Delete this?
+// Template? 
 void render_tile(CHARS c, int x, int y, SDL_Color bg_color, SDL_Color tile_color)
 {
     int X = TILE_WIDTH;
@@ -97,7 +97,7 @@ void render_tile(int c, int x, int y, SDL_Color bg_color, SDL_Color tile_color)
 		}
 	}
 
-    chars = get_ascii(c, TILE_WIDTH, TILE_HEIGHT);
+    chars = get_ascii(c/*, TILE_WIDTH, TILE_HEIGHT*/);
 
     // Which part of the texture is gonna be rendered
     char_tile.src.x = chars.char_x;

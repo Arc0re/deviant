@@ -6,6 +6,8 @@
 #ifndef CHARACTERS_H
 #define CHARACTERS_H
 
+#include "core.h"
+
 // ASCII CP437 255 CHARACTERS
 typedef enum {
 	CHAR_null = 0,
@@ -271,7 +273,15 @@ typedef struct {
     int char_y;
 } CHAR_DATA;
 
-CHAR_DATA get_ascii(CHARS c);
-CHAR_DATA get_ascii(int c, int X, int Y);
+#include "render.h"
+
+template <typename T>
+CHAR_DATA get_ascii(T c)
+{
+    CHAR_DATA chr;
+    chr.char_x = c % 16; chr.char_x = chr.char_x * TILE_WIDTH;
+    chr.char_y = c / 16; chr.char_y = chr.char_y * TILE_HEIGHT;
+    return chr;
+}
 
 #endif
