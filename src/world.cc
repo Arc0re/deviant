@@ -16,13 +16,14 @@ World::World()
 	, deathLimit(3)
 	, steps(3)
 {
-	std::cout << "Chances: " << chanceStartAlive << std::endl;
-	std::cout << "Birth limit: " << birthLimit << std::endl;
-	std::cout << "Death limit: " << deathLimit << std::endl;
+	Debug::print("Chances", chanceStartAlive);
+	Debug::print("Birth limit", birthLimit);
+	Debug::print("Death limit", deathLimit);
+
 	initWorld();
 	for (int i = 1; i <= steps; ++i) {
 		doSimulationStep();
-		std::cout << "Generation step: " << i << std::endl;
+		Debug::print("Generation step", i);
 	}
 }
 

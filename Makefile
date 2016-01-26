@@ -1,4 +1,3 @@
-#http://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 CXX:= g++-5
 SOURCES:= $(wildcard src/*.cc)
 OBJECTS:= $(addprefix obj/,$(notdir $(SOURCES:.cc=.o)))

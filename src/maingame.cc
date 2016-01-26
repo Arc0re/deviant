@@ -107,7 +107,7 @@ void mv_menu_cursor(SDL_KeyboardEvent *key)
 	case SDLK_UP: --pos; break;
 	case SDLK_RETURN:
 		if (main_menu[0].is_selected) currentgs = IN_GAME;
-		if (main_menu[1].is_selected) bubble("Not implemented yet ;3");
+		if (main_menu[1].is_selected) Debug::msgBox("Not implemented yet ;3");
 		if (main_menu[2].is_selected) quit = TRUE;
 		break;
 	}
