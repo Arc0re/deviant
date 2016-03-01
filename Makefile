@@ -1,6 +1,6 @@
 CXX:= g++-5
-SOURCES:= $(wildcard src/*.cc)
-OBJECTS:= $(addprefix obj/,$(notdir $(SOURCES:.cc=.o)))
+SOURCES:= $(wildcard src/*.cpp)
+OBJECTS:= $(addprefix obj/,$(notdir $(SOURCES:.cpp=.o)))
 
 CXXFLAGS:= -c -std=c++14 -Wall -Werror -g -I/usr/local/include/SDL2 -Iinclude
 LDFLAGS:= -L/usr/local/lib
@@ -17,7 +17,7 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CXX) $(LDFLAGS) $(LDLIBS) -o $@ $^
 	@echo "\nLinking for target $(EXECUTABLE) succeeded!\n\n"
 
-obj/%.o: src/%.cc
+obj/%.o: src/%.cpp
 	@echo "\nCompiling:"
 	$(CXX) $(CXXFLAGS) -o $@ $<
 
