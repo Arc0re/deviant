@@ -1,9 +1,9 @@
 #include "object.h"
 #include "render.h"
 
-Object::Object(CHARS sym, SDL_Color bg, SDL_Color t)
-	: x(0)
-	, y(0)
+Object::Object(CHARS sym, SDL_Color bg, SDL_Color t):
+	x(0),
+	y(0)
 {
 	this->sym = sym;
 	this->bg = bg;

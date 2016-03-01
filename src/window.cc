@@ -5,8 +5,8 @@
 #include <SDL_image.h>
 
 /* GLOBALS */
-SDL_Window* WIN;
-SDL_Renderer* REN;
+SDL_Window *WIN;
+SDL_Renderer *REN;
 
 void init_window()
 {
@@ -38,10 +38,4 @@ void close_window()
     SDL_DestroyWindow(WIN);
     IMG_Quit();
     SDL_Quit();
-}
-
-void msg_box(const char* message)
-{
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,"message", message,
-    NULL);
 }

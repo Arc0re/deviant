@@ -24,11 +24,11 @@ bool load_texture(std::string path)
 
     char_tile.texture = IMG_LoadTexture(REN, full_path.c_str());
 	if (char_tile.texture == NULL) {
-		std::cerr << "Wrong texture name: " << full_path << std::endl;
+		Debug::print("Wrong texture name", full_path);
 		return false;
 	}
 	
-    printf("Spritesheet texture %s loaded.\n", full_path.c_str());
+	Debug::print("Spritesheet texture loaded", full_path);
 	return true;
 }
 
@@ -97,7 +97,7 @@ void render_tile(int c, int x, int y, SDL_Color bg_color, SDL_Color tile_color)
 		}
 	}
 
-    chars = get_ascii(c/*, TILE_WIDTH, TILE_HEIGHT*/);
+    chars = get_ascii(c);
 
     // Which part of the texture is gonna be rendered
     char_tile.src.x = chars.char_x;

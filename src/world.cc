@@ -8,13 +8,13 @@
 #include <iostream>
 
 
-World::World()
-	: gen(rd())
-	, dis(0, 1)
-	, chanceStartAlive(0.4f)
-	, birthLimit(4)
-	, deathLimit(3)
-	, steps(3)
+World::World():
+	gen(rd()),
+	dis(0, 1),
+	chanceStartAlive(0.4f),
+    birthLimit(4),
+	deathLimit(3),
+	steps(3)
 {
 	Debug::print("Chances", chanceStartAlive);
 	Debug::print("Birth limit", birthLimit);

@@ -78,6 +78,7 @@ void run_game()
 				}
 			}
 		}
+		SDL_Delay(1000/60); //  60 FPS limit
 	}
 	close_window();
 }

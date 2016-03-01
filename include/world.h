@@ -32,7 +32,6 @@ private:
 	Cellmap cellmap;
 	Cellmap newCellmap;
 	
-	
 	void initWorld();
     void doSimulationStep();
 	int countAliveNeighbours(Cellmap cellmap, int x, int y);

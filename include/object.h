@@ -5,8 +5,7 @@
 
 #include "core.h"
 
-class Object
-{
+class Object {
 public:
 	Object(CHARS sym, SDL_Color bg, SDL_Color t);
 	~Object();
