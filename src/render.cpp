@@ -2,7 +2,6 @@
 #include "colors.h"
 #include "window.h"
 #include "render.h"
-#include "characters.h"
 #include "menu.h"
 #include "file_parser.h"
 

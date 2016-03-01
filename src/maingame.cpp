@@ -2,7 +2,6 @@
 #include "maingame.h"
 #include "colors.h"
 #include "window.h"
-#include "characters.h"
 #include "render.h"
 #include "player.h"
 #include "states.h"

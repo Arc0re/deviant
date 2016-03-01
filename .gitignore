@@ -1,1 +1,6 @@
+Debug/
 *.VC.opendb
+*.exe
+*.ilk
+*.pdb
+*.sdf
