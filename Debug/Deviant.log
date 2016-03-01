@@ -1,0 +1,6 @@
+﻿  render.cpp
+src\render.cpp(74): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+src\render.cpp(75): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+src\render.cpp(123): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+src\render.cpp(124): warning C4244: '=' : conversion de 'float' en 'int', perte possible de données
+  Deviant.vcxproj -> C:\Users\Thomas Guyot\deviant\deviant\.\bin\Deviant.exe

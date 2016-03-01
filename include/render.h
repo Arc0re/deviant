@@ -3,9 +3,8 @@
 #ifndef RENDER_H
 #define RENDER_H
 
-#include "characters.h"
+#include "core.h"
 
-#include <SDL.h>
 #include <string>
 
 typedef struct {

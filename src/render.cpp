@@ -19,7 +19,11 @@ int TILE_HEIGHT = 0;
 
 bool load_texture(std::string path)
 {
+#ifdef _WIN32
+	std::string full_path("art\\");
+#else
 	std::string full_path("art/");
+#endif
 	full_path.append(path);
 
     char_tile.texture = IMG_LoadTexture(REN, full_path.c_str());
@@ -41,7 +45,11 @@ void render_tile(CHARS c, int x, int y, SDL_Color bg_color, SDL_Color tile_color
     SDL_Rect bg = {X*11, Y*13, X, Y}; //pos of the block tile
 
     if (char_tile.texture == NULL) {
+#ifdef _WIN32
+		auto parsed = parser::parse_file("data\\init.txt");
+#else
 		auto parsed = parser::parse_file("data/init.txt");
+#endif
 		for (auto it = parsed.cbegin(); it != parsed.cend(); ++it) {
 			if (!load_texture(it->second.c_str()))
 				exit(EXIT_FAILURE); // Crash if wrong texture name
@@ -67,14 +75,14 @@ void render_tile(CHARS c, int x, int y, SDL_Color bg_color, SDL_Color tile_color
     char_tile.dest.h = Y*sc;
 
     // bg tile color
-    SDL_SetTextureColorMod(char_tile.texture, bg_color.r, bg_color.g,
-        bg_color.b);
+    SDL_SetTextureColorMod(char_tile.texture, bg_color.r, bg_color.g, bg_color.b);
+
     SDL_RenderCopy(REN, char_tile.texture, &bg, &char_tile.dest);
+
     // char color
-    SDL_SetTextureColorMod(char_tile.texture, tile_color.r, tile_color.g,
-        tile_color.b);
-    SDL_RenderCopy(REN, char_tile.texture, &char_tile.src,
-        &char_tile.dest);
+    SDL_SetTextureColorMod(char_tile.texture, tile_color.r, tile_color.g, tile_color.b);
+
+    SDL_RenderCopy(REN, char_tile.texture, &char_tile.src, &char_tile.dest);
 }
 
 void render_tile(int c, int x, int y, SDL_Color bg_color, SDL_Color tile_color)
@@ -90,7 +98,11 @@ void render_tile(int c, int x, int y, SDL_Color bg_color, SDL_Color tile_color)
 	SDL_Rect bg = {TILE_WIDTH*11, TILE_HEIGHT*13, TILE_WIDTH, TILE_HEIGHT}; //pos of the block tile
 
 	if (char_tile.texture == NULL) {
+#ifdef _WIN32
+		auto parsed = parser::parse_file("data\\init.txt");
+#else
 		auto parsed = parser::parse_file("data/init.txt");
+#endif
 		for (auto it = parsed.cbegin(); it != parsed.cend(); ++it) {
 			if (!load_texture(it->second.c_str()))
 				exit(EXIT_FAILURE); // Crash if wrong texture name

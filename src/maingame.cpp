@@ -45,7 +45,11 @@ void run_game()
 		
 		// Window title + size
 		SDL_GetWindowSize(WIN, &ww, &wh);
+#ifdef _WIN32
+		sprintf_s(size, "%s %dx%d", WINDOW_TITLE, ww, wh);
+#else
 		sprintf(size, "%s %dx%d", WINDOW_TITLE, ww, wh);
+#endif
 		SDL_SetWindowTitle(WIN, size);
 
 		// Set screen to black

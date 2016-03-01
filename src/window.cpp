@@ -1,8 +1,14 @@
 #include "core.h"
 #include "window.h"
 #include <stdio.h>
-#include <SDL.h>
-#include <SDL_image.h>
+
+//#ifdef _WIN32
+//#include <SDL2\SDL.h>
+//#include <SDL2\SDL_image.h>
+//#elif __APPLE__
+//#include <SDL.h>
+//#include <SDL_image.h>
+//#endif
 
 /* GLOBALS */
 SDL_Window *WIN;

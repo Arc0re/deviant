@@ -12,7 +12,7 @@ void usage()
 // the C is required for SDL
 extern "C" int main(int argc, char* argv[])
 {
-	while ((argc > 1) && (argv[1][0] == '-'))
+	/*while ((argc > 1) && (argv[1][0] == '-'))
 	{
 		switch (argv[1][1])
 		{
@@ -24,8 +24,7 @@ extern "C" int main(int argc, char* argv[])
 
 		++argv;
 		--argc;
-	}
-
+	}*/
     run_game();
     return 0;
 }
