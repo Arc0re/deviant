@@ -35,7 +35,6 @@ bool load_texture(std::string path)
 	return true;
 }
 
-// Template? 
 void render_tile(CHARS c, int x, int y, SDL_Color bg_color, SDL_Color tile_color)
 {
     int X = TILE_WIDTH;
