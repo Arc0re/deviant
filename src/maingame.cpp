@@ -69,14 +69,19 @@ void run_game()
 					switch (ev.key.keysym.sym) {
 					case SDLK_q:
 						quit = TRUE;
+						break;
 					case SDLK_UP:
 						player.move(0, -12); break;
+						break;
 					case SDLK_DOWN:
 						player.move(0, 12); break;
+						break;
 					case SDLK_LEFT:
 						player.move(-8, 0); break;
+						break;
 					case SDLK_RIGHT:
 						player.move(8, 0); break;
+						break;
 					} break;
 				}
 			}
